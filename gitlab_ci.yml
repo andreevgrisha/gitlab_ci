@@ -1,0 +1,35 @@
+image: nginx
+services: 
+   -docker:dind 
+
+stages:
+  - testing
+  - packing
+  - uploading  
+  - checking
+
+variables:
+  IMAGE: 10.3.0.20:8089/testwebapp
+
+before_script:
+  - docker login -u runner -p $NEXUS_PASS 10.3.0.20:8089
+
+test:
+  stage: testing
+  script: cat index.html | grep '<title>WebApp</title>'
+
+build:
+  stage: packing
+  script:
+    - docker build -t $IMAGE .
+  only: master
+
+upload:
+  stage: uploading
+    - docker push $IMAGE
+
+check:
+  stage: checking
+  script:
+    - docker pull $IMAGE
+

@@ -1,0 +1,14 @@
+---
+# Run Gitlab & gitlab-runner
+
+- hosts: localhost
+  connection: local
+  become: yes
+  become_user: root
+
+  tasks:
+
+  - name: check docker service
+
+
+...
