@@ -1,6 +1,4 @@
-image: nginx
-services: 
-   -docker:dind 
+image: docker:latest
 
 stages:
   - testing
@@ -12,7 +10,7 @@ variables:
   IMAGE: 10.3.0.20:8089/testwebapp
 
 before_script:
-  - docker login -u runner -p $NEXUS_PASS 10.3.0.20:8089
+  - docker login -u runner -p "$NEXUS_PASS" 10.3.0.20:8089
 
 test:
   stage: testing
@@ -22,10 +20,10 @@ build:
   stage: packing
   script:
     - docker build -t $IMAGE .
-  only: master
 
 upload:
   stage: uploading
+  script:
     - docker push $IMAGE
 
 check:
