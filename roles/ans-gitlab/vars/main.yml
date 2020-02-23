@@ -1,0 +1,11 @@
+---
+# vars file for ans-gitlab
+
+packages:
+        - curl
+        - policycoreutils-python
+        - postfix
+
+http_srvs:
+        - http
+        - https

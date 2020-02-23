@@ -1,0 +1,36 @@
+---
+
+- name: scan environment
+  service_facts:
+  register: services_state
+- debug: var=services_state.ansible_facts.services["docker.service"].state
+- debug: var=services_state.ansible_facts.services["nexus.service"].state
+
+  
+- name: check and install utils 
+  yum:
+    name: "{{ packages }}"
+    state: present
+
+- name: allow http(s) connection
+  firewalld:
+    zone: public
+    service: "{{ http_srvs }}"
+    permanent: yes
+    state: enabled
+  notify: firewall reload
+
+- name: postfix start
+  systemd:
+    name: postfix
+    state: started
+
+- name: add gitlab repo
+  command: curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
+
+- name: install gitlab
+  yum:
+    name: gitlab-ce
+    state: present
+
+...

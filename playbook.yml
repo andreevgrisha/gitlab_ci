@@ -6,9 +6,17 @@
   become: yes
   become_user: root
 
+  roles:
+  - role: ans-gitlab
+
   tasks:
 
-  - name: check docker service
+  - name: gitlab-runner in container
+    docker_compose:
+      project_src: /home/gri/gitlab_runner
 
-
+  - name: configure runner
+    script: /home/gri/gitlab_runner/runner_registration.sh
+    
+    
 ...

@@ -1,0 +1,6 @@
+---
+# handlers file for ans-gitlab
+
+- name: firewall reload
+  command: firewall-cmd reload
+
