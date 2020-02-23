@@ -8,4 +8,4 @@ Docker-compose.yml for start gitlab-runner in container.
 
 Runner_registration.sh script for configure gitlab-runner (Nexus as registry). 
 
-Gitlab-ci.yml content CI pipeline for Gitlab (add NEXUS_PASS variables for store registy password).
+Gitlab-ci.yml content CI pipeline for Gitlab (add NEXUS_PASS variables for store registry password).
