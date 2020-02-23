@@ -1,6 +1,6 @@
 Just a test Gitlab-CI project.
 
-Playbook.yml - check environment and install Gitlab Omnibus package.
+Playbook.yml - check environment and install Gitlab Omnibus package. Used role ans-gitlab made and tested in Molecule.
 
 Dockerfile for build own image: nginx docker image  and add static index.hmtl file as webapplication.
 
