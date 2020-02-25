@@ -6,11 +6,11 @@ services:
     container_name: gitlab-runner
     image: gitlab/gitlab-runner:latest
     volumes:
-      - /srv/gitlab-runner/data:/home/gri/gitlab-runner/data
-      - /srv/gitlab-runner/config:/etc/gitlab-runner
-      - /var/run/docker.sock:/var/run/docker.sock:rw
-    environment:
-      - CI_SERVER_URL=http://10.3.0.20
+      - ~/gitlab-runner/config:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/gitlab-runners/build:/srv/build
     restart: always
     network_mode: host
+    extra_hosts: 
+        - "gr.io:10.3.0.20"
    

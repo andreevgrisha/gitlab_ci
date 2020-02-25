@@ -9,9 +9,6 @@ stages:
 variables:
   IMAGE: 10.3.0.20:8089/testwebapp
 
-before_script:
-  - docker login -u runner -p "$NEXUS_PASS" 10.3.0.20:8089
-
 test:
   stage: testing
   script: cat index.html | grep '<title>WebApp</title>'
@@ -24,10 +21,12 @@ build:
 upload:
   stage: uploading
   script:
+    - docker login -u runner -p "$NEXUS_PASS" 10.3.0.20:8089
     - docker push $IMAGE
 
 check:
   stage: checking
   script:
+    - docker login -u runner -p "$NEXUS_PASS" 10.3.0.20:8089
     - docker pull $IMAGE
 

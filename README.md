@@ -1,11 +1,13 @@
 Just a test Gitlab-CI project.
 
-Playbook.yml - check environment and install Gitlab Omnibus package. Used role ans-gitlab made and tested in Molecule.
+Inventory with main host.
 
-Dockerfile for build own image: nginx docker image  and add static index.hmtl file as webapplication.
+Playbook.yml - check environment and install Gitlab Omnibus package. Used role 'ans-gitlab' made and tested in Molecule.
 
-Docker-compose.yml for start gitlab-runner in container.
+Docker-compose.yml for start gitlab-runner in container (config/config.toml - registration file for runner).
 
-Runner_registration.sh script for configure gitlab-runner (Nexus as registry). 
+In source/ :
 
-Gitlab-ci.yml content CI pipeline for Gitlab (add NEXUS_PASS variables for store registry password).
+- Dockerfile for build own image: nginx docker image  and add static index.hmtl file as webapplication.
+
+- Gitlab-ci.yml content CI pipeline for Gitlab (add NEXUS_PASS variables for store registry password).

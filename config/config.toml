@@ -1,0 +1,12 @@
+[[runners]]
+    name = "docker build runner"
+    url = "http://gr.io"
+    token = "yr_YWNKFyEMMfBqhwwRC"
+    executor = "docker"
+    builds_dir = "/srv/build"
+    
+    [runners.docker]
+        image = "nginx"
+        memory = "512m"
+
+    
