@@ -8,7 +8,7 @@ services:
     volumes:
       - ~/gitlab-runner/config:/etc/gitlab-runner
       - /var/run/docker.sock:/var/run/docker.sock
-      - ~/gitlab-runners/build:/srv/build
+      - ~/gitlab-runner/build:/srv/build
     restart: always
     network_mode: host
     extra_hosts: 
