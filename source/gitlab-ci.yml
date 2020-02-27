@@ -7,7 +7,7 @@ stages:
   - checking
 
 variables:
-  IMAGE: 10.3.0.20:8089/testwebapp
+  IMAGE: gr.io:8089/testwebapp
 
 test:
   stage: testing
@@ -21,12 +21,12 @@ build:
 upload:
   stage: uploading
   script:
-    - docker login -u runner -p "$NEXUS_PASS" 10.3.0.20:8089
+    - docker login -u runner -p "$NEXUS_PASS" gr.io:8089
     - docker push $IMAGE
 
 check:
   stage: checking
   script:
-    - docker login -u runner -p "$NEXUS_PASS" 10.3.0.20:8089
+    - docker login -u runner -p "$NEXUS_PASS" gr.io:8089
     - docker pull $IMAGE
 
