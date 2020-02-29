@@ -12,5 +12,5 @@ services:
     restart: always
     network_mode: host
     extra_hosts: 
-        - "gr.io:192.168.0.70"
+        - "gr.io:10.3.0.20"
    
