@@ -7,7 +7,7 @@ stages:
   - checking
 
 variables:
-  IMAGE: gr.io:8089/testwebapp
+  IMAGE: grilab.io:8082/testwebapp
 
 test:
   stage: testing
@@ -21,12 +21,12 @@ build:
 upload:
   stage: uploading
   script:
-    - docker login -u runner -p "$NEXUS_PASS" gr.io:8089
+    - docker login -u gri -p "$NEXUS_PASS" grilab.io:8082
     - docker push $IMAGE
 
 check:
   stage: checking
   script:
-    - docker login -u runner -p "$NEXUS_PASS" gr.io:8089
+    - docker login -u gri -p "$NEXUS_PASS" grilab.io:8082
     - docker pull $IMAGE
 
