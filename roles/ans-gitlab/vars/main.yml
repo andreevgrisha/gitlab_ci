@@ -6,6 +6,3 @@ packages:
         - policycoreutils-python
         - postfix
 
-http_srvs:
-        - http
-        - https

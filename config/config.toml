@@ -6,7 +6,7 @@ check_interval = 0
 
 [[runners]]
   name = "docker-build-runner"
-  url = "http://gr.io/"
+  url = "http://grilab.io/"
   token = "wsBnmeRxHpSmSuX8_rvy"
   executor = "docker"
   [runners.custom_build_dir]

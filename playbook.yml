@@ -1,7 +1,7 @@
 ---
 # Run Gitlab & gitlab-runner
 
-- hosts: gr.io
+- hosts: grilab.io
   connection: local
   become: yes
   become_user: root
@@ -13,7 +13,7 @@
 
   - name: gitlab-runner in container
     docker_compose:
-        project_src: ~/gitlab-runner
+        project_src: /home/gri/gitlab_ci
 
     
 ...

@@ -12,10 +12,17 @@
     name: "{{ packages }}"
     state: present
 
-- name: allow http(s) connection
+- name: allow https connection
   firewalld:
     zone: public
-    service: "{{ http_srvs }}"
+    port: 443/tcp 
+    permanent: yes
+    state: enabled
+          
+- name: allow http connection
+  firewalld:
+    zone: public
+    port: 80/tcp 
     permanent: yes
     state: enabled
   notify: firewall reload
@@ -26,7 +33,9 @@
     state: started
 
 - name: add gitlab repo
-  command: curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
+  shell: curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | bash
+  args:
+          warn: no
 
 - name: install gitlab
   yum:
